@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# SmartCommands: Command Bar with LLM Capabilities
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project demonstrates how to create SmartCommands that leverages Google's Gemini Nano, an on-device large language model (LLM), to enhance user navigation through natural language commands.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Natural Language Processing:** Uses Google's Gemini Nano to interpret and process user commands directly in the browser.
+- **Shadcn Components:** Utilizes Shadcn components for a sleek and responsive interface.
+- **Dynamic Suggestions:** Provides real-time suggestions based on user input.
 
-### `npm start`
+## Prerequisites
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Node.js and npm installed.
+- A Google Generative AI API key.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+```bash
+git clone https://github.com/LLMByte/SmartBar.git
+cd SmartBar
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install the dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Set up your Google Generative AI API key:
 
-### `npm run eject`
+- Create a `.env` file in the root directory.
+- Add your API key:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+REACT_APP_API_KEY=YOUR_API_KEY
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Running the Project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Start the development server:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+2. Open your browser and navigate to `http://localhost:3000`.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Opening the Command Bar
 
-### Code Splitting
+- Press `Ctrl + K` to open the command bar.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Adding Links
 
-### Analyzing the Bundle Size
+Add your links in the `links` array in `CommandMenu.js`. Each link should have a `name`, `link`, and `description`:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```javascript
+const links = useMemo(() => [
+  { "name": "Billing", "link": "/billing", "description": "You can pay for your services here" },
+  { "name": "Payment History", "link": "/payment-history", "description": "View your past payments" },
+  { "name": "Contact Us", "link": "/contact", "description": "Get in touch with our support team using phone or email" },
+  { "name": "Account Settings", "link": "/account", "description": "Manage your account details" },
+  { "name": "Help Center", "link": "/help", "description": "Find answers to your questions" },
+], []);
+```
 
-### Making a Progressive Web App
+### Commands
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+You can use natural language commands to navigate through the links. Examples of commands include:
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- "Where can I pay my bills?"
+- "Show me my past payments."
+- "How do I contact support?"
+- "I need to update my account details."
+- "I have a question about my service."
